@@ -1,0 +1,357 @@
+:root {
+    --bg1: #0f2a0f;
+    --bg2: #132f13;
+    --lime: #38ff5a;
+    --emerald: #17c95d;
+    --dark: #0b180b;
+    --accent: #00ffc8;
+    --gold: #ffd23f;
+    --red: #ff3b3b;
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%
+}
+
+body {
+    margin: 0;
+    color: #eaffef;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background:
+        linear-gradient(180deg, #2e7d32 0 18px, #5ca141 18px 22px, #6ab04c 22px 24px, #3b7a2c 24px 26px, #2d5e24 26px 28px),
+        repeating-linear-gradient(0deg, #5a3d1b 0 6px, #6e4b23 6px 12px, #7e5528 12px 18px, #5a3d1b 18px 24px);
+    background-size: 100% 28px, 100% 24px;
+    background-position: 0 0, 0 28px;
+    image-rendering: pixelated;
+    cursor: none;
+}
+
+button,
+a,
+input,
+summary {
+    cursor: none !important;
+}
+
+.scanlines:before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    opacity: .06;
+    background: repeating-linear-gradient(180deg, #000 0 2px, transparent 2px 4px);
+}
+
+.crt:after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .25;
+    background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, .18), transparent 40%);
+}
+
+.wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 18px
+}
+
+header {
+    border: 6px solid #1b401b;
+    background: linear-gradient(180deg, var(--bg1), var(--bg2));
+    box-shadow: 0 10px 0 #0e240e, 0 16px 0 #061306, inset 0 0 0 4px #244b24;
+    border-radius: 16px;
+    padding: 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.logo {
+    font-family: "Press Start 2P", monospace;
+    letter-spacing: 1px;
+    font-size: clamp(18px, 3.2vw, 36px);
+    text-shadow: 0 0 8px var(--lime), 0 0 18px var(--emerald);
+}
+
+.sub {
+    margin-top: 12px;
+    opacity: .95;
+    font-size: 14px
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 18px;
+    text-decoration: none;
+    color: #041;
+    font-weight: 800;
+    background: linear-gradient(180deg, #72ff9b, #27ff6f);
+    border: 4px solid #0a4;
+    border-radius: 12px;
+    padding: 14px 18px;
+    box-shadow: 0 6px 0 #083;
+    transform: translateY(0);
+}
+
+.btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 3px 0 #083
+}
+
+.grid {
+    display: grid;
+    gap: 18px;
+    margin-top: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.card {
+    position: relative;
+    border: 6px solid #173f17;
+    border-radius: 16px;
+    background: linear-gradient(180deg, #143314, #0f2a0f);
+    padding: 18px;
+    box-shadow: 0 10px 0 #0b1c0b, inset 0 0 0 4px #1e4a1e;
+}
+
+.card h3 {
+    font-family: "Press Start 2P", monospace;
+    font-size: 16px;
+    margin: 6px 0 10px;
+    color: var(--gold);
+    text-shadow: 0 0 6px #baffc1;
+}
+
+.badge {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background: var(--gold);
+    color: #3a2b00;
+    border: 4px solid #2b2100;
+    font-weight: 900;
+    padding: 8px 10px;
+    border-radius: 12px;
+    transform: rotate(6deg)
+}
+
+.pill {
+    display: inline-block;
+    font-family: "Press Start 2P", monospace;
+    font-size: 11px;
+    color: #042;
+    background: #8affbd;
+    border: 3px solid #0a4;
+    padding: 6px 8px;
+    border-radius: 10px;
+    margin-top: 8px;
+}
+
+.details {
+    margin-top: 26px;
+    border: 6px solid #133613;
+    border-radius: 16px;
+    background: linear-gradient(180deg, #0e220e, #0b180b);
+    padding: 20px;
+    box-shadow: 0 10px 0 #061206, inset 0 0 0 4px #1a3f1a;
+}
+
+details {
+    border: 4px solid #1f4d1f;
+    border-radius: 12px;
+    padding: 12px;
+    background: #0d1f0d
+}
+
+details+details {
+    margin-top: 12px
+}
+
+summary {
+    cursor: pointer;
+    font-family: "Press Start 2P", monospace
+}
+
+.qr {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 14px;
+    flex-wrap: wrap
+}
+
+input[type="text"] {
+    width: min(520px, 100%);
+    padding: 12px;
+    border: 4px solid #1c471c;
+    border-radius: 10px;
+    background: #071407;
+    color: #dfffe8
+}
+
+.small {
+    font-size: 12px;
+    opacity: .85
+}
+
+footer {
+    margin: 22px 0 60px;
+    text-align: center;
+    opacity: .8;
+    font-size: 12px
+}
+
+/* MLG spice */
+.mlg {
+    position: absolute;
+    left: 0px;
+    top: 6px;
+    transform: rotate(-8deg);
+    background: linear-gradient(135deg, #00ffd9, #00ff57);
+    color: #033;
+    border: 4px solid #022;
+    padding: 8px 10px;
+    border-radius: 12px;
+    font-family: "Press Start 2P", monospace;
+    font-size: 12px;
+    text-shadow: 0 0 6px #00ffb7;
+}
+
+.hit {
+    position: fixed;
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+    background: transparent;
+}
+
+.hit::before,
+.hit::after {
+    content: "";
+    position: absolute;
+    background: #fff;
+}
+
+.hit::before {
+    left: 50%;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 6px #0f0;
+}
+
+.hit::after {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    transform: translateY(-50%);
+    box-shadow: 0 0 6px #0f0;
+}
+
+
+@keyframes pop {
+    to {
+        transform: scale(1.8);
+        opacity: 0
+    }
+}
+
+.particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none
+}
+
+.px {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--emerald);
+    box-shadow: 0 0 6px var(--emerald), 0 0 12px var(--emerald);
+    image-rendering: pixelated;
+}
+
+.cursor {
+    position: fixed;
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.cursor::before,
+.cursor::after {
+    content: "";
+    position: absolute;
+    background: #fff;
+}
+
+.cursor::before {
+    left: 50%;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 6px #0f0;
+}
+
+.cursor::after {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    transform: translateY(-50%);
+    box-shadow: 0 0 6px #0f0;
+}
+
+/* Mining crack effect */
+.mine {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    background: repeating-linear-gradient(45deg,
+            rgba(0, 255, 0, 0.8) 0 4px,
+            rgba(0, 255, 0, 0.2) 4px 8px);
+    border: 2px solid #0f0;
+    opacity: 0.8;
+    animation: crack .4s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes crack {
+    0% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+}
+
+/* Add this at the end or near other header styles */
+.header-img-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 18px 0 0 0;
+}
+
+header img {
+    display: block;
+    max-width: 220px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}

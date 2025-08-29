@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vote Tyler — Student Gov</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body class="scanlines crt">
+    <div class="wrap">
+        <header>
+            <div class="mlg">MLG PRO ✔</div>
+            <h1 class="logo">TYLER FOR PRESIDENT</h1>
+            <p class="sub">Blocky plans. Real wins. No lag.</p>
+            <div class="header-img-wrap">
+                <img src="image.png" alt="Tyler campaign image">
+            </div>
+            <a class="btn" href="#plan">See the Plan</a>
+        </header>
+
+        <!-- THREE MAIN PLACEHOLDERS -->
+        <section class="grid" aria-label="Top Three">
+            <article class="card">
+                <div class="badge">#1</div>
+                <h3>BIG THING: MOVIE NIGHTS</h3>
+                <p>Movie Nights will be returning.</p>
+                <span class="pill">ETA: Mid September</span>
+            </article>
+            <article class="card">
+                <div class="badge">#2</div>
+                <h3>BIG THING: SNACK CART</h3>
+                <p>Complementary Snack Cart will be installed on campus</p>
+                <span class="pill">ETA: 1<sup>st</sup> Semester</span>
+            </article>
+            <article class="card">
+                <div class="badge">#3</div>
+                <h3>BIG THING: HOLIDAY DECORATING</h3>
+                <p>Student-run activities where we design, create, and set up holiday decorations</p>
+                <span class="pill">ETA: Major Holidays</span>
+            </article>
+        </section>
+
+        <!-- ELABORATE / ADD MORE -->
+        <!-- ELABORATE / ADD MORE -->
+        <section id="plan" class="details">
+            <h2 style="font-family:'Press Start 2P', monospace; margin:0 0 12px; color:var(--accent);">Plan Details</h2>
+
+            <details open>
+                <summary>Movie Nights — Full Breakdown</summary>
+                <p class="small">Over the last few years, we've had Movie Night once a month, and they've always been
+                    the backbone of our community. We vote on a movie earlier in the day, order pizza, set up some
+                    blankets, pillows, and a projector, and sit back and enjoy the movie. It's one of my favorite Fusion
+                    traditions, and I would love to continue it this year.</p>
+            </details>
+            <details>
+                <summary>Snack Cart - Full Breakdown</summary>
+                <p class="small">I've noticed that sometimes students get tired or have difficulty focusing during
+                    school. Often, this is a result of students not eating anything. If we implement a complementary
+                    Snack Cart, students would have easy access to fuel to study and function more efficiently, which
+                    would greatly improve the individual experience of students.</p>
+            </details>
+            <details>
+                <summary>Holiday Decorations - Full Breakdown</summary>
+                <p class="small">We've always gone all out with holiday decorations, and that's not gonna stop this
+                    year. For Halloween, Christmas, Valentine's Day and more, we will create, design, and implement
+                    decorations, showcasing our individual creative talents as students, as well as celebrating these
+                    holidays as a community.</p>
+            </details>
+        </section>
+
+
+        <footer>© <span id="year"></span> Tyler Charvat — Built with pixel power.</footer>
+    </div>
+
+    <div class="particles" aria-hidden="true"></div>
+
+    <script>
+        // Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Emerald particle burst
+        const layer = document.querySelector('.particles');
+        function emeraldBurst(x, y) {
+            const cx = x ?? window.innerWidth / 2;
+            const cy = y ?? window.innerHeight / 2;
+            for (let i = 0; i < 28; i++) {
+                const p = document.createElement('div');
+                p.className = 'px';
+                p.style.left = cx + 'px'; p.style.top = cy + 'px';
+                p.style.transform = `rotate(${Math.random() * 360}deg)`;
+                layer.appendChild(p);
+                const ang = Math.random() * Math.PI * 2;
+                const spd = 2 + Math.random() * 5;
+                const vx = Math.cos(ang) * spd;
+                const vy = Math.sin(ang) * spd;
+                let life = 20 + Math.random() * 20;
+                (function animate() {
+                    if (life-- <= 0) { p.remove(); return; }
+                    const rect = p.getBoundingClientRect();
+                    p.style.left = rect.left + vx + 'px';
+                    p.style.top = rect.top + vy + 'px';
+                    p.style.opacity = life / 40;
+                    requestAnimationFrame(animate);
+                })();
+            }
+        }
+
+        // Keyboard easter egg: type "MLG"
+        let seq = '';
+        document.addEventListener('keydown', e => {
+            seq = (seq + e.key.toUpperCase()).slice(-3);
+            if (seq === 'MLG') { emeraldBurst(); seq = ''; }
+        });
+
+        // Utility: escape HTML
+        function escapeHTML(s) {
+            return s.replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m]));
+        }
+
+        const cursor = document.createElement('div');
+        cursor.className = 'cursor';
+        document.body.appendChild(cursor);
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = (e.clientX - 12) + 'px';
+            cursor.style.top = (e.clientY - 12) + 'px';
+        });
+
+        // Mining animation on click
+        document.addEventListener('click', e => {
+            const mine = document.createElement('div');
+            mine.className = 'mine';
+            mine.style.left = (e.clientX - 16) + 'px';
+            mine.style.top = (e.clientY - 16) + 'px';
+            document.body.appendChild(mine);
+            emeraldBurst(e.clientX, e.clientY); // keep emerald burst
+            setTimeout(() => mine.remove(), 400);
+        });
+    </script>
+</body>
+
+</html>
